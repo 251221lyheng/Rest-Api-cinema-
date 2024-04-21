@@ -1,11 +1,10 @@
 package com.example.demomybatis.controller;
 
 import com.example.demomybatis.model.Employee;
+import com.example.demomybatis.model.request.EmployeeRequest;
 import com.example.demomybatis.service.EmployeeService;
 import org.apache.ibatis.annotations.Result;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +21,19 @@ public class EmployeeController {
     @GetMapping
     public List<Employee> getAllEmployees (){
         return employeeService.getAllEmployees();
+    }
+
+    @GetMapping("/{id}")
+    public Employee getEmployeeById(@PathVariable("id") Integer employeeId){
+        return employeeService.getEmployeeById(employeeId);
+    }
+
+    @PostMapping
+    public  Employee addEmployee(@RequestBody EmployeeRequest employeeRequest){
+        return employeeService.addEmployee(employeeRequest);
+    }
+    @PutMapping("/{id}")
+    public  Employee updateEmployee(@PathVariable("id") Integer employeeId,@RequestBody EmployeeRequest employeeRequest){
+        return  employeeService.updateEmployee(employeeId,employeeRequest);
     }
 }

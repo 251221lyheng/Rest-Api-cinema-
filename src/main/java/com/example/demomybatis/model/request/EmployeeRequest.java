@@ -1,4 +1,4 @@
-package com.example.demomybatis.model;
+package com.example.demomybatis.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,16 +6,16 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Locale;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class EmployeeRequest {
 
-public class Employee {
-    private Integer employeeId;
-    private  String employeeName;
+    private String employeeName;
     private LocalDateTime dateOfBirth;
-    private Department department;
-    private List<Project> projectList;
+    private Integer departmentId;
+    private List<Integer> projectIds;
+
+
 }
